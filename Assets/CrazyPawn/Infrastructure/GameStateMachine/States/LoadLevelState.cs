@@ -1,15 +1,20 @@
+using CrazyPawn.Services.PawnsSpawn;
+
 namespace CrazyPawn.Infrastructure.GameStateMachine.States
 {
     public class LoadLevelState : IState
     {
-        void IState.Enter()
+        private readonly IPawnsSpawnService _pawnsSpawnService;
+        private readonly GameStateMachine _stateMachine;
+
+        async void IState.Enter()
         {
-            throw new System.NotImplementedException();
+            await _pawnsSpawnService.Spawn();
+            _stateMachine.Enter<GameLoopState>();
         }
 
         void IState.Exit()
         {
-            throw new System.NotImplementedException();
         }
     }
 }
