@@ -7,6 +7,12 @@ namespace CrazyPawn.Infrastructure.GameStateMachine.States
         private readonly IPawnsSpawnService _pawnsSpawnService;
         private readonly GameStateMachine _stateMachine;
 
+        public LoadLevelState(IPawnsSpawnService pawnsSpawnService, GameStateMachine stateMachine)
+        {
+            _pawnsSpawnService = pawnsSpawnService;
+            _stateMachine = stateMachine;
+        }
+
         async void IState.Enter()
         {
             await _pawnsSpawnService.Spawn();

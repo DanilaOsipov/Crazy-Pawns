@@ -1,3 +1,4 @@
+using CrazyPawn.Infrastructure.AssetsManagement;
 using CrazyPawn.Infrastructure.Factories;
 using CrazyPawn.Services.Input;
 using Zenject;
@@ -8,6 +9,7 @@ namespace CrazyPawn.Infrastructure.Installers
     {
         public override void InstallBindings()
         {
+            Container.BindInterfacesTo<ResourcesAssetsProvider>().AsSingle().NonLazy();
             BindServices();
             BindFactories();
         }
@@ -20,6 +22,7 @@ namespace CrazyPawn.Infrastructure.Installers
         private void BindFactories()
         {
             Container.BindInterfacesAndSelfTo<StateFactory>().AsSingle();
+            Container.BindInterfacesAndSelfTo<PawnFactory>().AsSingle();
         }
     }
 }
