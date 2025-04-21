@@ -4,12 +4,10 @@ namespace CrazyPawn.Infrastructure.GameStateMachine.States
     {
         void IState.Enter()
         {
-            throw new System.NotImplementedException();
         }
 
         void IState.Exit()
         {
-            throw new System.NotImplementedException();
         }
     }
 }
