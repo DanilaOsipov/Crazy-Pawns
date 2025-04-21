@@ -10,6 +10,7 @@ using CrazyPawn.Services.AvailableConnections;
 using CrazyPawn.Services.ConnectionsHighlight;
 using CrazyPawn.Services.ConnectionCreation;
 using CrazyPawn.Services.PawnsCache;
+using CrazyPawn.Services.ConnectionUpdating;
 
 namespace CrazyPawn.Infrastructure.Installers
 {
@@ -33,6 +34,7 @@ namespace CrazyPawn.Infrastructure.Installers
             Container.BindInterfacesAndSelfTo<PawnsCacheService>().AsSingle();
             Container.BindInterfacesAndSelfTo<ConnectionsHighlightService>().AsSingle();
             Container.BindInterfacesAndSelfTo<ConnectionCreationService>().AsSingle();
+            Container.BindInterfacesAndSelfTo<ConnectionUpdatingService>().AsSingle();
         }
     }
 }

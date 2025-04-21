@@ -11,6 +11,18 @@ namespace CrazyPawn.Services.Interaction
         private readonly IInputService _inputService;
         private readonly Camera _camera;
 
+        private IInteractable _interactableUnderMouse;
+
+        public IInteractable InteractableUnderMouse
+        {
+            get => _interactableUnderMouse;
+            private set
+            {
+                if (_interactableUnderMouse != value)
+                    _interactableUnderMouse = value;
+            }
+        }
+
         public event Action<IInteractable> OnMouseOverInteractable = delegate { };
 
         public InteractionService(IInputService inputService, Camera camera)
@@ -26,8 +38,14 @@ namespace CrazyPawn.Services.Interaction
             {
                 var interactable = hitInfo.collider.GetComponentInParent<IInteractable>();
                 if (interactable != null)
+                {
+                    InteractableUnderMouse = interactable;
                     OnMouseOverInteractable(interactable);
+                    return;
+                }
             }
+
+            InteractableUnderMouse = null;
         }
     }
 }

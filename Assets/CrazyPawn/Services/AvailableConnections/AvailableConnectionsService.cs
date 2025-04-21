@@ -25,5 +25,8 @@ namespace CrazyPawn.Services.AvailableConnections
                 .Where(connector => !connector.HasConnection(selection))
                 .ToList();
         }
+
+        public bool IsConnectionAvailable(Connector start, Connector end) => GetAvailableConnections(start)
+                .Contains(end);
     }
 }

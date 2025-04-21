@@ -32,7 +32,7 @@ namespace CrazyPawn.Services.PawnsSpawn
             var pawnDelta = Random.insideUnitCircle * _settings.InitialZoneRadius;
             var pawnPos = centerPos + new Vector3(pawnDelta.x, centerPos.y, pawnDelta.y);
 
-            return await _pawnFactory.Create(pawnPos);
+            return await _pawnFactory.Create(pawnPos, Quaternion.identity);
         }
     }
 }

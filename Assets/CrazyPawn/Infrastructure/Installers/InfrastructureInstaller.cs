@@ -23,6 +23,7 @@ namespace CrazyPawn.Infrastructure.Installers
         {
             Container.BindInterfacesAndSelfTo<StateFactory>().AsSingle();
             Container.BindInterfacesAndSelfTo<PawnFactory>().AsSingle();
+            Container.BindInterfacesAndSelfTo<ConnectionFactory>().AsSingle();
         }
     }
 }

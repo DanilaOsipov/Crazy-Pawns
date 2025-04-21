@@ -44,6 +44,7 @@ namespace CrazyPawn.Services.PawnDelete
             if (!isGrounded)
             {
                 _pawnsCacheService.Remove(pawn);
+                pawn.BreakConnections();
                 UnityEngine.Object.Destroy(pawn.gameObject);
             }
         }

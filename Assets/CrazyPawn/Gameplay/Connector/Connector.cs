@@ -17,6 +17,10 @@ namespace CrazyPawn.Gameplay.Connector
 
         public void Remove(Connection.Connection connection) => _connections.Remove(connection);
 
-        public bool HasConnection(Connector to) => _connections.Any(connection => connection == to);
+        public bool HasConnection(Connector to) => _connections.Any(e => e.HasConnector(to));
+
+        public void RenderConnections() => _connections.ForEach(e => e.Render());
+
+        public void BreakConnections() => _connections.ToList().ForEach(e => e.Break());
     }
 }
