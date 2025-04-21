@@ -1,5 +1,6 @@
 ﻿using CrazyPawn.Gameplay.Pawn;
 using CrazyPawn.Services.PawnGrounded;
+using CrazyPawn.Services.PawnsCache;
 using System;
 using Zenject;
 
@@ -9,11 +10,15 @@ namespace CrazyPawn.Services.PawnDelete
     {
         private readonly PawnGroundedService _pawnGroundedService;
         private readonly CrazyPawnSettings _settings;
+        private readonly PawnsCacheService _pawnsCacheService;
 
-        public PawnDeleteService(PawnGroundedService pawnGroundedService, CrazyPawnSettings settings)
+        public PawnDeleteService(PawnGroundedService pawnGroundedService,
+                                 CrazyPawnSettings settings,
+                                 PawnsCacheService pawnsCacheService)
         {
             _pawnGroundedService = pawnGroundedService;
             _settings = settings;
+            _pawnsCacheService = pawnsCacheService;
         }
 
         void IInitializable.Initialize()
@@ -37,7 +42,10 @@ namespace CrazyPawn.Services.PawnDelete
         private void OnPawnDragEndHandler(Pawn pawn, bool isGrounded)
         {
             if (!isGrounded)
+            {
+                _pawnsCacheService.Remove(pawn);
                 UnityEngine.Object.Destroy(pawn.gameObject);
+            }
         }
     }
 }

@@ -5,6 +5,11 @@ using CrazyPawn.Services.Interaction;
 using CrazyPawn.Services.PawnDelete;
 using CrazyPawn.Services.PawnDrag;
 using CrazyPawn.Services.PawnGrounded;
+using CrazyPawn.Services.ConnectorSelection;
+using CrazyPawn.Services.AvailableConnections;
+using CrazyPawn.Services.ConnectionsHighlight;
+using CrazyPawn.Services.ConnectionCreation;
+using CrazyPawn.Services.PawnsCache;
 
 namespace CrazyPawn.Infrastructure.Installers
 {
@@ -23,6 +28,11 @@ namespace CrazyPawn.Infrastructure.Installers
             Container.BindInterfacesAndSelfTo<PawnDragService>().AsSingle();
             Container.BindInterfacesAndSelfTo<PawnGroundedService>().AsSingle();
             Container.BindInterfacesAndSelfTo<PawnDeleteService>().AsSingle();
+            Container.BindInterfacesAndSelfTo<ConnectorSelectionService>().AsSingle();
+            Container.BindInterfacesAndSelfTo<AvailableConnectionsService>().AsSingle();
+            Container.BindInterfacesAndSelfTo<PawnsCacheService>().AsSingle();
+            Container.BindInterfacesAndSelfTo<ConnectionsHighlightService>().AsSingle();
+            Container.BindInterfacesAndSelfTo<ConnectionCreationService>().AsSingle();
         }
     }
 }
